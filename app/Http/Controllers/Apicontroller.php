@@ -8,11 +8,11 @@ use App\Kategori;
 class Apicontroller extends Controller
 {
     // kategori
-    public function kindex()
+    public function index()
     {
         return Kategori::all();
     }
-    public function kcreate(Request $req)
+    public function create(Request $req)
     {
         $kat = new Kategori;
         $kat->nama_kategori = $req->nama;
@@ -20,7 +20,7 @@ class Apicontroller extends Controller
 
         return "Data berhasil masuk";
     }
-    public function kupdate(Request $req, $id)
+    public function update(Request $req, $id)
     {
         $nama = $req->nama;
 
@@ -30,7 +30,7 @@ class Apicontroller extends Controller
 
         return "Data berhasil diupdate";
     }
-    public function kdelete($id)
+    public function delete($id)
     {
         $kat = Kategori::find($id);
         $kat->delete();
@@ -49,22 +49,5 @@ class Apicontroller extends Controller
         $kat->save();
 
         return "Data berhasil masuk";
-    }
-    public function lupdate(Request $req, $id)
-    {
-        $nama = $req->nama;
-
-        $kat = Kategori::find($id);
-        $kat->nama_kategori = $nama;
-        $kat->save();
-
-        return "Data berhasil diupdate";
-    }
-    public function ldelete($id)
-    {
-        $kat = Kategori::find($id);
-        $kat->delete();
-
-        return "Data berhasil dihapus";
     }
 }

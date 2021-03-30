@@ -30,7 +30,7 @@ class HomeController extends Controller
 
     public function gmaps()
     {
-        $locations = DB::table('lokasis')->get();
-        return view('gmaps', compact('locations'));
+        $lokasis = DB::table('lokasis')->get();
+        return view('gmaps', compact('lokasis'));
     }
 }

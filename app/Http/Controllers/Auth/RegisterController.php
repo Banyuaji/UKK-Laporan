@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::ADMIN;
 
     /**
      * Create a new controller instance.
@@ -53,7 +53,6 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'settings' => ['{"locale":"en"}'],
         ]);
     }
 
@@ -65,15 +64,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $role_id = 4;
+        $settings = '{"locale": "en"}';
         return User::create([
-            'role_id' => 3,
+            'role_id' => $role_id,
             'name' => $data['name'],
             'email' => $data['email'],
             'avatar' => null,
             'email_verified_at' => null,
             'password' => Hash::make($data['password']),
             'remember_token' => null,
-            'settings' => '{"locale":"en"}' ,
         ]);
     }
 }

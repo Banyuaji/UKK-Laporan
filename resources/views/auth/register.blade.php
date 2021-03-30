@@ -10,6 +10,10 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+                        <div class="form-group">
+                            <input id="role_id" type="hidden" class="form-control" name="role_id" value="{{ old('role_id', 4) }}">
+                            <input id="settings" type="hidden" class="form-control" name="settings" value='{{ old('settings', '{"locale": "en"}') }}'>
+                        </div>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>

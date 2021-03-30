@@ -22,9 +22,9 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
-
-Auth::routes();
-
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/home', [HomeController::class, 'gmaps'])->name('maps');
-
+Route::get('/gmaps', [HomeController::class, 'gmaps'])->name('maps');
+Auth::routes();
+Route::group(['prefix' => 'masyarakat'], function () {
+    Voyager::routes();
+});
